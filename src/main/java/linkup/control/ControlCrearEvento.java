@@ -4,8 +4,11 @@
  */
 package linkup.control;
 
+import linkup.crearevento.EnviarInvitaciones;
 import linkup.crearevento.IngresarDetallesEvento;
 import linkup.crearevento.SeleccionarFechaHora;
+import linkup.crearevento.SeleccionarUbicacion;
+import linkup.crearevento.VentanaPrincipalCrearEvento;
 
 /**
  *
@@ -17,6 +20,11 @@ public class ControlCrearEvento {
         mostrarFormularioDetalles();
     }
     
+    public void mostrarVentanaPrincipal(){
+        VentanaPrincipalCrearEvento ventanaPrincipal = new VentanaPrincipalCrearEvento();
+        ventanaPrincipal.mostrar();
+    }
+    
     public void mostrarFormularioDetalles(){
         IngresarDetallesEvento ingresarDetalles = new IngresarDetallesEvento(this);
         ingresarDetalles.mostrar();
@@ -25,6 +33,16 @@ public class ControlCrearEvento {
     public void mostrarSeleccionFechaHora(){
         SeleccionarFechaHora seleccionFechaHora = new SeleccionarFechaHora(this);
         seleccionFechaHora.mostrar();
+    }
+    
+    public void mostrarSeleccionarUbicacion(){
+        SeleccionarUbicacion seleccionUbicacion = new SeleccionarUbicacion(this);
+        seleccionUbicacion.mostrar();
+    }
+    
+    public void mostrarEnviarInvitaciones(){
+        EnviarInvitaciones enviarInvitaciones = EnviarInvitaciones(this);
+        enviarInvitaciones.mostrar();
     }
     
 }
