@@ -14,15 +14,13 @@ import java.time.LocalDateTime;
 public class OrganizadorEventos implements IOrganizadorEventos{
 
     @Override
-    public EventoDTO crearEvento(String nombre, String etiqueta, String descripcion, LocalDateTime fechaHora) {
+    public EventoDTO crearEvento(String nombre, String etiqueta, String descripcion) {
         if(nombre.isEmpty() || !nombre.matches("^[a-zA-Z0-9 ]+$")){
             throw new IllegalArgumentException("Eliga un nombre correcto para el evento");
         }
-        if(fechaHora == null || fechaHora.isBefore(LocalDateTime.now())){
-            throw new IllegalArgumentException("La fecha no puede ser nula o pasada.");
-        }
         
-        EventoDTO nuevoEvento = new EventoDTO(nombre, etiqueta, descripcion, fechaHora );
+        
+        EventoDTO nuevoEvento = new EventoDTO(nombre, etiqueta, descripcion );
         //poner en GUI "evento creado con exito"
         return nuevoEvento;
     }

@@ -15,7 +15,7 @@ public class EventoDTO {
     private String nombreEvento;
     private String etiqueta;
     private String descripcionEvento;
-    private LocalDateTime fechaHora;
+    //private LocalDateTime fechaHora;
     //private ubicacion con API
 
     public EventoDTO() {
@@ -23,11 +23,11 @@ public class EventoDTO {
     
     
 
-    public EventoDTO(String nombreEvento, String etiqueta, String descripcionEvento, LocalDateTime fechaHora ) {
+    public EventoDTO(String nombreEvento, String etiqueta, String descripcionEvento) {
         this.nombreEvento = nombreEvento;
         this.etiqueta = etiqueta;
         this.descripcionEvento = descripcionEvento;
-        this.fechaHora = fechaHora;
+        //this.fechaHora = fechaHora;
         //ubicacion
     }
 
@@ -54,14 +54,14 @@ public class EventoDTO {
     public void setDescripcionEvento(String descripcionEvento) {
         this.descripcionEvento = descripcionEvento;
     }
-
-    public LocalDateTime getFechaHora() {
-        return fechaHora;
-    }
-
-    public void setFechaHora(LocalDateTime fechaHora) {
-        this.fechaHora = fechaHora;
-    }
+//
+//    public LocalDateTime getFechaHora() {
+//        return fechaHora;
+//    }
+//
+//    public void setFechaHora(LocalDateTime fechaHora) {
+//        this.fechaHora = fechaHora;
+//    }
     
     
     
