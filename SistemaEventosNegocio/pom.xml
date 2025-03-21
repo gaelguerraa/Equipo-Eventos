@@ -11,4 +11,5 @@
         <maven.compiler.target>23</maven.compiler.target>
         <exec.mainClass>com.sistemaeventosnegocio.SistemaEventosNegocio</exec.mainClass>
     </properties>
+    <name>SistemaEventosNegocio</name>
 </project>
