@@ -4,6 +4,7 @@
  */
 package linkup.control;
 
+import linkup.crearevento.ConfirmacionEvento;
 import linkup.crearevento.EnviarInvitaciones;
 import linkup.crearevento.IngresarDetallesEvento;
 import linkup.crearevento.SeleccionarFechaHora;
@@ -21,7 +22,7 @@ public class ControlCrearEvento {
     }
     
     public void mostrarVentanaPrincipal(){
-        VentanaPrincipalCrearEvento ventanaPrincipal = new VentanaPrincipalCrearEvento();
+        VentanaPrincipalCrearEvento ventanaPrincipal = new VentanaPrincipalCrearEvento(this);
         ventanaPrincipal.mostrar();
     }
     
@@ -41,8 +42,13 @@ public class ControlCrearEvento {
     }
     
     public void mostrarEnviarInvitaciones(){
-        EnviarInvitaciones enviarInvitaciones = EnviarInvitaciones(this);
+        EnviarInvitaciones enviarInvitaciones = new EnviarInvitaciones(this);
         enviarInvitaciones.mostrar();
+    }
+    
+    public void mostrarConfirmacionEvento(){
+        ConfirmacionEvento confirmacionEvento = new ConfirmacionEvento(this);
+        confirmacionEvento.mostrar();
     }
     
 }

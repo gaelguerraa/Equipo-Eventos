@@ -24,6 +24,7 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
 
     public VentanaPrincipalCrearEvento() {
         initComponents();
+        setLocationRelativeTo(null);
     }
     
     public void mostrar(){
