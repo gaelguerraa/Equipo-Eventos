@@ -16,17 +16,19 @@ public class EventoDTO {
     private String etiqueta;
     private String descripcionEvento;
     private LocalDateTime fechaHora;
+    //private ubicacion con API
 
     public EventoDTO() {
     }
     
     
 
-    public EventoDTO(String nombreEvento, String etiqueta, String descripcionEvento, LocalDateTime fechaHora) {
+    public EventoDTO(String nombreEvento, String etiqueta, String descripcionEvento, LocalDateTime fechaHora ) {
         this.nombreEvento = nombreEvento;
         this.etiqueta = etiqueta;
         this.descripcionEvento = descripcionEvento;
         this.fechaHora = fechaHora;
+        //ubicacion
     }
 
     public String getNombreEvento() {
