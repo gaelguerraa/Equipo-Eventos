@@ -4,6 +4,7 @@
  */
 package DTO_Negocio;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -14,16 +15,18 @@ public class EventoDTO {
     private String nombreEvento;
     private List<String> etiquetas;
     private String descripcionEvento;
+    private LocalDateTime fechaHora;
 
     public EventoDTO() {
     }
     
     
 
-    public EventoDTO(String nombreEvento, List<String> etiquetas, String descripcionEvento) {
+    public EventoDTO(String nombreEvento, List<String> etiquetas, String descripcionEvento, LocalDateTime fechaHora) {
         this.nombreEvento = nombreEvento;
         this.etiquetas = etiquetas;
         this.descripcionEvento = descripcionEvento;
+        this.fechaHora = fechaHora;
     }
 
     public String getNombreEvento() {
@@ -49,6 +52,16 @@ public class EventoDTO {
     public void setDescripcionEvento(String descripcionEvento) {
         this.descripcionEvento = descripcionEvento;
     }
+
+    public LocalDateTime getFechaHora() {
+        return fechaHora;
+    }
+
+    public void setFechaHora(LocalDateTime fechaHora) {
+        this.fechaHora = fechaHora;
+    }
+    
+    
     
     
 }
