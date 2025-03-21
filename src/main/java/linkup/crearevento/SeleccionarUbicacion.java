@@ -8,12 +8,12 @@ package linkup.crearevento;
  *
  * @author Dana Chavez
  */
-public class SeleccionarFechaHora extends javax.swing.JFrame {
+public class SeleccionarUbicacion extends javax.swing.JFrame {
 
     /**
      * Creates new form VentanaPrincipalCrearEvento
      */
-    public SeleccionarFechaHora() {
+    public SeleccionarUbicacion() {
         initComponents();
     }
 
@@ -39,6 +39,8 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -87,7 +89,7 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(168, 91, 102));
-        jLabel3.setText("Seleccionar fecha y hora");
+        jLabel3.setText("Seleccionar ubicacion");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(246, 227, 230));
@@ -101,6 +103,14 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(246, 227, 230));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonregresar.png"))); // NOI18N
         jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, -1, -1));
+
+        jTextField1.setBackground(new java.awt.Color(246, 227, 230));
+        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(148, 63, 75)));
+        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 260, 40));
+
+        jButton4.setBackground(new java.awt.Color(246, 227, 230));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonubicacion.png"))); // NOI18N
+        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, 50));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 300, 400));
 
@@ -139,14 +149,22 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SeleccionarFechaHora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SeleccionarUbicacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SeleccionarFechaHora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SeleccionarUbicacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SeleccionarFechaHora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SeleccionarUbicacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SeleccionarFechaHora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SeleccionarUbicacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -159,7 +177,7 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SeleccionarFechaHora().setVisible(true);
+                new SeleccionarUbicacion().setVisible(true);
             }
         });
     }
@@ -170,6 +188,7 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -178,6 +197,7 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel logo;
     private javax.swing.JButton menuButton;
     // End of variables declaration//GEN-END:variables
