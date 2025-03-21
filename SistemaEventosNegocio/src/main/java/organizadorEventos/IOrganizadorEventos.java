@@ -13,6 +13,6 @@ import java.time.LocalDateTime;
  */
 public interface IOrganizadorEventos {
     
-    EventoDTO crearEvento(String nombre, String etiqueta, String descripcion, LocalDateTime fechaHora);
+    EventoDTO crearEvento(String nombre, String etiqueta, String descripcion);
     
 }
