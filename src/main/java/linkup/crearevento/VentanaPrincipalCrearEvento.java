@@ -4,19 +4,37 @@
  */
 package linkup.crearevento;
 
+import linkup.control.ControlCrearEvento;
+
 /**
  *
  * @author Dana Chavez
  */
 public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
 
+    private ControlCrearEvento controlador;
     /**
      * Creates new form VentanaPrincipalCrearEvento
      */
+    public VentanaPrincipalCrearEvento(ControlCrearEvento controlador) {
+        this.controlador = controlador;
+        initComponents();
+        setLocationRelativeTo(null);
+    }
+
     public VentanaPrincipalCrearEvento() {
         initComponents();
     }
-
+    
+    public void mostrar(){
+        setVisible(true);
+    }
+    
+    public void cerrar(){
+        setVisible(false);
+        dispose();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,6 +89,11 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
 
         crearEventoButton.setBackground(new java.awt.Color(255, 255, 255));
         crearEventoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotoncrear.png"))); // NOI18N
+        crearEventoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearEventoButtonActionPerformed(evt);
+            }
+        });
         jPanel1.add(crearEventoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, -1, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 864, 558));
@@ -81,6 +104,11 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
     private void inicioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inicioButtonActionPerformed
+
+    private void crearEventoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearEventoButtonActionPerformed
+        controlador.iniciarFlujoCreacionEvento();
+        cerrar();
+    }//GEN-LAST:event_crearEventoButtonActionPerformed
 
     /**
      * @param args the command line arguments
