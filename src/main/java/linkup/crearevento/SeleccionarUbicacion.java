@@ -4,19 +4,38 @@
  */
 package linkup.crearevento;
 
+import linkup.control.ControlCrearEvento;
+
 /**
  *
  * @author Dana Chavez
  */
 public class SeleccionarUbicacion extends javax.swing.JFrame {
 
+    private ControlCrearEvento controlador;
     /**
      * Creates new form VentanaPrincipalCrearEvento
      */
+    
+    public SeleccionarUbicacion(ControlCrearEvento controlador) {
+        this.controlador = controlador;
+        initComponents();
+        setLocationRelativeTo(null);
+    }
+
     public SeleccionarUbicacion() {
         initComponents();
     }
 
+    public void mostrar(){
+        setVisible(true);
+    }
+    
+    public void cerrar(){
+        setVisible(false);
+        dispose();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -94,14 +113,29 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(246, 227, 230));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonsiguiente.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(246, 227, 230));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotoncancelar.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(246, 227, 230));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonregresar.png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, -1, -1));
 
         jTextField1.setBackground(new java.awt.Color(246, 227, 230));
@@ -131,6 +165,21 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
     private void inicioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inicioButtonActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        controlador.mostrarVentanaPrincipal();
+        cerrar();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        controlador.mostrarSeleccionFechaHora();
+        cerrar();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        controlador.mostrarEnviarInvitaciones();
+        cerrar();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

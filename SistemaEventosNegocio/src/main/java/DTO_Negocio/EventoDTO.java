@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class EventoDTO {
     private String nombreEvento;
-    private List<String> etiquetas;
+    private String etiqueta;
     private String descripcionEvento;
     private LocalDateTime fechaHora;
 
@@ -22,9 +22,9 @@ public class EventoDTO {
     
     
 
-    public EventoDTO(String nombreEvento, List<String> etiquetas, String descripcionEvento, LocalDateTime fechaHora) {
+    public EventoDTO(String nombreEvento, String etiqueta, String descripcionEvento, LocalDateTime fechaHora) {
         this.nombreEvento = nombreEvento;
-        this.etiquetas = etiquetas;
+        this.etiqueta = etiqueta;
         this.descripcionEvento = descripcionEvento;
         this.fechaHora = fechaHora;
     }
@@ -37,12 +37,12 @@ public class EventoDTO {
         this.nombreEvento = nombreEvento;
     }
 
-    public List<String> getEtiquetas() {
-        return etiquetas;
+    public String getEtiqueta() {
+        return etiqueta;
     }
 
-    public void setEtiquetas(List<String> etiquetas) {
-        this.etiquetas = etiquetas;
+    public void setEtiqueta(String etiqueta) {
+        this.etiqueta = etiqueta;
     }
 
     public String getDescripcionEvento() {
