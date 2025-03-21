@@ -116,6 +116,7 @@ public class EnviarInvitaciones extends javax.swing.JFrame {
 
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(241, 212, 217));
+        jTextField1.setForeground(new java.awt.Color(168, 91, 102));
         jTextField1.setText("jTextField1");
         jTextField1.setBorder(null);
         jPanel5.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, 30));
