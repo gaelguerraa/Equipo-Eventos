@@ -4,10 +4,15 @@
  */
 package organizadorEventos;
 
+import DTO_Negocio.EventoDTO;
+import java.time.LocalDateTime;
+
 /**
  *
  * @author gael_
  */
 public interface IOrganizadorEventos {
+    
+    EventoDTO crearEvento(String nombre, String etiqueta, String descripcion);
     
 }

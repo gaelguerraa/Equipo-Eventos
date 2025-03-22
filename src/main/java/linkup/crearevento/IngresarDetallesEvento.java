@@ -34,6 +34,14 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
         setVisible(false);
         dispose();
     }
+    
+    private void guardar(){
+        String nombreEvento = this.txtNombreEvento.getText();
+        String etiqueta = (String) this.comboBoxEtiqueta.getSelectedItem();
+        String descripcion = this.txtDescripcion.getText();
+        
+   
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,13 +62,13 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtNombreEvento = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboBoxEtiqueta = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtDescripcion = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        botonAdelante = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -88,7 +96,6 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linklogo.png"))); // NOI18N
         jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 210, 50));
 
-        inicioButton.setBackground(new java.awt.Color(255, 255, 255));
         inicioButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupinicio.png"))); // NOI18N
         inicioButton.setBorder(null);
         inicioButton.addActionListener(new java.awt.event.ActionListener() {
@@ -98,7 +105,6 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
         });
         jPanel1.add(inicioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 110, 50));
 
-        explorarButton.setBackground(new java.awt.Color(255, 255, 255));
         explorarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupexplorar.png"))); // NOI18N
         jPanel1.add(explorarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 160, -1));
 
@@ -113,45 +119,45 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
         jLabel3.setText("Nombre del evento");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(148, 63, 75)));
-        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 260, 40));
+        txtNombreEvento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(148, 63, 75)));
+        jPanel3.add(txtNombreEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 260, 40));
 
         jLabel4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(168, 91, 102));
         jLabel4.setText("Etiqueta");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
-        jComboBox1.setBackground(new java.awt.Color(246, 227, 230));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(148, 63, 75)));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        comboBoxEtiqueta.setBackground(new java.awt.Color(246, 227, 230));
+        comboBoxEtiqueta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxEtiqueta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(148, 63, 75)));
+        comboBoxEtiqueta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                comboBoxEtiquetaActionPerformed(evt);
             }
         });
-        jPanel3.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 260, 40));
+        jPanel3.add(comboBoxEtiqueta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 260, 40));
 
         jLabel5.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(168, 91, 102));
         jLabel5.setText("Banner");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
-        jTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(148, 63, 75)));
-        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 260, 40));
+        txtDescripcion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(148, 63, 75)));
+        jPanel3.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 260, 40));
 
         jLabel6.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(168, 91, 102));
         jLabel6.setText("Descripcion");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(246, 227, 230));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonsiguiente.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonAdelante.setBackground(new java.awt.Color(246, 227, 230));
+        botonAdelante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonsiguiente.png"))); // NOI18N
+        botonAdelante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonAdelanteActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, -1, -1));
+        jPanel3.add(botonAdelante, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(246, 227, 230));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotoncancelar.png"))); // NOI18N
@@ -182,19 +188,20 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_inicioButtonActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void comboBoxEtiquetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxEtiquetaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_comboBoxEtiquetaActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         controlador.mostrarVentanaPrincipal();
         cerrar();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonAdelanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAdelanteActionPerformed
+        
         controlador.mostrarSeleccionFechaHora();
         cerrar();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonAdelanteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,11 +242,11 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonAdelante;
+    private javax.swing.JComboBox<String> comboBoxEtiqueta;
     private javax.swing.JButton explorarButton;
     private javax.swing.JButton inicioButton;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -251,9 +258,9 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel logo;
     private javax.swing.JButton menuButton;
+    private javax.swing.JTextField txtDescripcion;
+    private javax.swing.JTextField txtNombreEvento;
     // End of variables declaration//GEN-END:variables
 }
