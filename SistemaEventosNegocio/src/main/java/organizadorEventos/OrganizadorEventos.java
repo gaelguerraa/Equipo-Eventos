@@ -4,7 +4,9 @@
  */
 package organizadorEventos;
 
+import DAO.PersistenciaDAO;
 import DTO_Negocio.EventoDTO;
+import ObjetosNegocio.Evento;
 import java.time.LocalDateTime;
 
 /**
@@ -13,17 +15,26 @@ import java.time.LocalDateTime;
  */
 public class OrganizadorEventos implements IOrganizadorEventos{
 
-    @Override
-    public EventoDTO crearEvento(String nombre, String etiqueta, String descripcion) {
-        if(nombre.isEmpty() || !nombre.matches("^[a-zA-Z0-9 ]+$")){
-            throw new IllegalArgumentException("Eliga un nombre correcto para el evento");
-        }
-        
-        
-        EventoDTO nuevoEvento = new EventoDTO(nombre, etiqueta, descripcion );
-        //poner en GUI "evento creado con exito"
-        return nuevoEvento;
+    private PersistenciaDAO persistenciaDAO;
+    
+    public OrganizadorEventos(PersistenciaDAO persistenciaDAO) {
+        this.persistenciaDAO = persistenciaDAO;
     }
+
+    @Override
+    public Evento crearEvento(EventoDTO eventoDTO) {
+        Evento  evento = new Evento();
+        evento.setNombreEvento(eventoDTO.getNombreEvento());
+        evento.setDescripcionEvento(eventoDTO.getDescripcionEvento());
+        evento.setAdmin(eventoDTO.getAdmin());
+        evento.setEtiqueta(eventoDTO.getEtiqueta());
+        evento.setFechaHora(eventoDTO.getFechaHora());
+        evento.setUbicacion(eventoDTO.getUbicacion());
+        persistenciaDAO.agregarEventos(evento);
+        return evento;
+    }
+
+   
         
 
     

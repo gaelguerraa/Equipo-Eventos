@@ -4,7 +4,9 @@
  */
 package DTO_Negocio;
 
+import ObjetosNegocio.Usuario;
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -15,8 +17,12 @@ public class EventoDTO {
     private String nombreEvento;
     private String etiqueta;
     private String descripcionEvento;
-    //private LocalDateTime fechaHora;
+    private Calendar fechaHora;
+    private Usuario admin;
+    //private LocalDateTi me fechaHora;
     //private ubicacion con API
+    private String ubicacion;
+
 
     public EventoDTO() {
     }
@@ -31,6 +37,32 @@ public class EventoDTO {
         //ubicacion
     }
 
+    public Calendar getFechaHora() {
+        return fechaHora;
+    }
+
+    public void setFechaHora(Calendar fechaHora) {
+        this.fechaHora = fechaHora;
+    }
+
+    public Usuario getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Usuario admin) {
+        this.admin = admin;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
+    
+    
     public String getNombreEvento() {
         return nombreEvento;
     }

@@ -5,6 +5,7 @@
 package organizadorEventos;
 
 import DTO_Negocio.EventoDTO;
+import ObjetosNegocio.Evento;
 import java.time.LocalDateTime;
 
 /**
@@ -13,6 +14,6 @@ import java.time.LocalDateTime;
  */
 public interface IOrganizadorEventos {
     
-    EventoDTO crearEvento(String nombre, String etiqueta, String descripcion);
+    public abstract Evento crearEvento(EventoDTO eventoDTO);
     
 }

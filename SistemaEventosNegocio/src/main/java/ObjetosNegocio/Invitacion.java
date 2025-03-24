@@ -2,29 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DTO_Negocio;
-
-import ObjetosNegocio.Evento;
-import ObjetosNegocio.Usuario;
+package ObjetosNegocio;
 
 /**
  *
- * @author gael_
+ * @author santi
  */
-public class InvitacionesDTO {
+public class Invitacion {
     private  Usuario usuario;
     private  Evento evento;
     private  boolean  estado;
 
-    public InvitacionesDTO() {
+    public Invitacion() {
     }
     
-    public InvitacionesDTO(Usuario usuario, Evento evento) {
+    public Invitacion(Usuario usuario, Evento evento) {
         this.usuario = usuario;
         this.evento = evento;
+        this.estado = false;
     }
     
-    public InvitacionesDTO(Usuario usuario, Evento evento, boolean estado) {
+    public Invitacion(Usuario usuario, Evento evento, boolean estado) {
         this.usuario = usuario;
         this.evento = evento;
         this.estado = estado;
@@ -53,6 +51,4 @@ public class InvitacionesDTO {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-    
-    
 }

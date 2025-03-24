@@ -4,10 +4,17 @@
  */
 package AdministradorContactos;
 
+import ObjetosNegocio.Usuario;
+import java.util.List;
+
 /**
  *
  * @author gael_
  */
 public interface IAdministradorContactos {
+    
+    public abstract List<Usuario> contactos(Usuario usu);
+    
+    public abstract List<Usuario> enviarInvitaciones(List<Usuario> contactosSeleccionados);
     
 }
