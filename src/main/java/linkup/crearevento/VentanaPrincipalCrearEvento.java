@@ -4,7 +4,13 @@
  */
 package linkup.crearevento;
 
+import ObjetosNegocio.Evento;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JLabel;
 import linkup.control.ControlCrearEvento;
+import organizadorEventos.EventosException;
+import sistemaEventosNegocio.IFachadaEventos;
 
 /**
  *
@@ -13,15 +19,31 @@ import linkup.control.ControlCrearEvento;
 public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
 
     private ControlCrearEvento controlador;
+    private IFachadaEventos fachadaEventos;
+    
     /**
      * Creates new form VentanaPrincipalCrearEvento
      */
-    public VentanaPrincipalCrearEvento(ControlCrearEvento controlador) {
+    public VentanaPrincipalCrearEvento(ControlCrearEvento controlador, IFachadaEventos fachadaEventos) {
         this.controlador = controlador;
+        this.fachadaEventos = fachadaEventos;
         initComponents();
         setLocationRelativeTo(null);
+        mostrarEventos();
     }
 
+    public void mostrarEventos(){
+        try {
+            for (Evento evento : fachadaEventos.obtenerEventos() ) {
+                JLabel jLabel = new JLabel(evento.getNombreEvento());
+                eventosPanel.add(jLabel);
+            }
+        } catch (EventosException ex) {
+            System.out.println("hola");
+        }
+    
+    }
+    
     public VentanaPrincipalCrearEvento() {
         initComponents();
         setLocationRelativeTo(null);
@@ -48,11 +70,11 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         menuButton = new javax.swing.JButton();
-        eventosScrollPane = new javax.swing.JScrollPane();
         logo = new javax.swing.JLabel();
         inicioButton = new javax.swing.JButton();
         explorarButton = new javax.swing.JButton();
         crearEventoButton = new javax.swing.JButton();
+        eventosPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -69,7 +91,6 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
         jPanel2.add(menuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 560));
-        jPanel1.add(eventosScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 350, 420));
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linklogo.png"))); // NOI18N
         jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 210, 50));
@@ -96,6 +117,9 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
             }
         });
         jPanel1.add(crearEventoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, -1, 40));
+
+        eventosPanel.setLayout(new javax.swing.BoxLayout(eventosPanel, javax.swing.BoxLayout.Y_AXIS));
+        jPanel1.add(eventosPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, 340, 430));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 864, 558));
 
@@ -148,7 +172,7 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton crearEventoButton;
-    private javax.swing.JScrollPane eventosScrollPane;
+    private javax.swing.JPanel eventosPanel;
     private javax.swing.JButton explorarButton;
     private javax.swing.JButton inicioButton;
     private javax.swing.JPanel jPanel1;

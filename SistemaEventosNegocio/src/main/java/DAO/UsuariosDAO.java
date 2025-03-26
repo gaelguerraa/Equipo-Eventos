@@ -8,6 +8,7 @@ import ObjetosNegocio.Evento;
 import ObjetosNegocio.Usuario;
 import java.util.ArrayList;
 import java.util.List;
+import organizadorEventos.EventosException;
 
 /**
  *
@@ -27,6 +28,15 @@ public class UsuariosDAO {
         usuarios.add(usuario2);
         usuarios.add(usuario3);
         
+    }
+    
+    public Usuario obtenerUsuario(String  s) throws EventosException{
+        for (Usuario usuario : usuarios) {
+            if (usuario.getEmail() == s) {
+                return usuario;
+            }
+        }
+        throw  new EventosException("no se encontro al usuario");
     }
     
     public List<Usuario> obtenerContactos(Usuario usu){

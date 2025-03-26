@@ -6,7 +6,10 @@ package organizadorEventos;
 
 import DTO_Negocio.EventoDTO;
 import ObjetosNegocio.Evento;
+import ObjetosNegocio.Usuario;
 import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.List;
 
 /**
  *
@@ -15,5 +18,11 @@ import java.time.LocalDateTime;
 public interface IOrganizadorEventos {
     
     public abstract Evento crearEvento(EventoDTO eventoDTO);
+    
+    public abstract Calendar comprobarFecha(Calendar fecha, Usuario usuario) throws EventosException;
+    
+    public abstract void AgregarEvento(Usuario usuario, Evento evento);
+    
+    public abstract List<Evento> obtenerEventos(Usuario usuario)  throws EventosException;
     
 }

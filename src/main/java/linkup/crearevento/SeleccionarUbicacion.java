@@ -4,7 +4,9 @@
  */
 package linkup.crearevento;
 
+import DTO_Negocio.EventoDTO;
 import linkup.control.ControlCrearEvento;
+import sistemaEventosNegocio.IFachadaEventos;
 
 /**
  *
@@ -13,12 +15,16 @@ import linkup.control.ControlCrearEvento;
 public class SeleccionarUbicacion extends javax.swing.JFrame {
 
     private ControlCrearEvento controlador;
+    private IFachadaEventos fachadaEventos;
+    private EventoDTO eventoDTO;
     /**
      * Creates new form VentanaPrincipalCrearEvento
      */
     
-    public SeleccionarUbicacion(ControlCrearEvento controlador) {
+    public SeleccionarUbicacion(ControlCrearEvento controlador, IFachadaEventos fachadaEventos, EventoDTO eventoDTO) {
         this.controlador = controlador;
+        this.eventoDTO = eventoDTO;
+        this.fachadaEventos = fachadaEventos;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -26,7 +32,12 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
     public SeleccionarUbicacion() {
         initComponents();
     }
-
+    
+    public void guardar(){
+        String ubicacion = UbicacionTXT.getText();
+        eventoDTO.setUbicacion(ubicacion);
+    }
+    
     public void mostrar(){
         setVisible(true);
     }
@@ -58,7 +69,7 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        UbicacionTXT = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -138,9 +149,14 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
         });
         jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, -1, -1));
 
-        jTextField1.setBackground(new java.awt.Color(246, 227, 230));
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(148, 63, 75)));
-        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 260, 40));
+        UbicacionTXT.setBackground(new java.awt.Color(246, 227, 230));
+        UbicacionTXT.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(148, 63, 75)));
+        UbicacionTXT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UbicacionTXTActionPerformed(evt);
+            }
+        });
+        jPanel3.add(UbicacionTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 260, 40));
 
         jButton4.setBackground(new java.awt.Color(246, 227, 230));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonubicacion.png"))); // NOI18N
@@ -172,14 +188,19 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        controlador.mostrarSeleccionFechaHora();
+        controlador.mostrarSeleccionFechaHora(eventoDTO);
         cerrar();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        controlador.mostrarEnviarInvitaciones();
+        guardar();
+        controlador.mostrarEnviarInvitaciones(eventoDTO);
         cerrar();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void UbicacionTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UbicacionTXTActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UbicacionTXTActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,6 +253,7 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField UbicacionTXT;
     private javax.swing.JButton explorarButton;
     private javax.swing.JButton inicioButton;
     private javax.swing.JButton jButton1;
@@ -246,7 +268,6 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel logo;
     private javax.swing.JButton menuButton;
     // End of variables declaration//GEN-END:variables

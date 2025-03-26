@@ -4,8 +4,14 @@
  */
 package Main;
 
+import DAO.PersistenciaDAO;
+import ObjetosNegocio.Calendario;
+import ObjetosNegocio.Usuario;
 import linkup.control.ControlCrearEvento;
 import linkup.crearevento.VentanaPrincipalCrearEvento;
+import organizadorEventos.EventosException;
+import sistemaEventosNegocio.FEventos;
+import sistemaEventosNegocio.IFachadaEventos;
 
 /**
  *
@@ -13,9 +19,14 @@ import linkup.crearevento.VentanaPrincipalCrearEvento;
  */
 public class Main {
 
-    public static void main(String[] args) {
-        ControlCrearEvento controlador = new ControlCrearEvento();
-        VentanaPrincipalCrearEvento ventanaPrincipalCrearEvento = new VentanaPrincipalCrearEvento(controlador);
+    public static void main(String[] args) throws EventosException {
+        
+        PersistenciaDAO persistenciaDAO = new PersistenciaDAO();
+        Usuario usuario = persistenciaDAO.obtenerUsuario("santileonlo03@gmail.com");
+        persistenciaDAO.AgregarCalendario(new Calendario(usuario));
+        IFachadaEventos fachadaEventos = new FEventos(persistenciaDAO, usuario);
+        ControlCrearEvento controlador = new ControlCrearEvento(fachadaEventos);
+        VentanaPrincipalCrearEvento ventanaPrincipalCrearEvento = new VentanaPrincipalCrearEvento(controlador, fachadaEventos);
         ventanaPrincipalCrearEvento.mostrar();
     }
     

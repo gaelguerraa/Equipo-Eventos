@@ -7,7 +7,10 @@ package organizadorEventos;
 import DAO.PersistenciaDAO;
 import DTO_Negocio.EventoDTO;
 import ObjetosNegocio.Evento;
+import ObjetosNegocio.Usuario;
 import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.List;
 
 /**
  *
@@ -32,6 +35,27 @@ public class OrganizadorEventos implements IOrganizadorEventos{
         evento.setUbicacion(eventoDTO.getUbicacion());
         persistenciaDAO.agregarEventos(evento);
         return evento;
+    }
+
+    @Override
+    public Calendar comprobarFecha(Calendar fecha, Usuario usuario) throws EventosException {
+        List<Evento> EventosUsuario = persistenciaDAO.obtenerEventos(usuario);
+        for (Evento evento : EventosUsuario) {
+            if(fecha == evento.getFechaHora()){
+                throw  new EventosException("Ya hay un evento en esta fecha");
+            }
+        }
+        return fecha;
+    }
+
+    @Override
+    public void AgregarEvento(Usuario usuario, Evento evento) {
+        persistenciaDAO.AgregarEvento(usuario, evento);
+    }
+
+    @Override
+    public List<Evento> obtenerEventos(Usuario usuario)  throws EventosException{
+        return persistenciaDAO.obtenerEventos(usuario);
     }
 
    

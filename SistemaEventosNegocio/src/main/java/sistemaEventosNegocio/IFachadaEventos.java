@@ -6,25 +6,33 @@ package sistemaEventosNegocio;
 
 import DTO_Negocio.EventoDTO;
 import ObjetosNegocio.Evento;
+import ObjetosNegocio.Invitacion;
 import ObjetosNegocio.Mapa;
 import ObjetosNegocio.Usuario;
-import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.List;
+import organizadorEventos.EventosException;
 
 /**
  *
  * @author gael_
  */
 public interface IFachadaEventos {
-    public abstract List<Usuario> encontrarContactos(Usuario usu);
-    
-    public abstract List<Usuario> seleccionarInvitados(Usuario usu);
+    public abstract List<Usuario> encontrarContactos();
     
     public abstract String SeleccionarUbicaion(Mapa map);
     
-    public abstract LocalDateTime SeleccionarFechaHora();
+    public abstract List<Invitacion> enviarInvitaciones(List<Usuario> contactosSeleccionados, Evento evento);
     
-    public abstract Evento AgregarDetalles(EventoDTO eventoDTO);
+    public abstract Calendar ValidarFecha(Calendar fecha)  throws EventosException;
+    
+    public abstract Evento CrearEvento(EventoDTO eventoDTO);
+    
+    public abstract List<Evento> obtenerEventos()  throws EventosException;
+    
+    public  abstract Usuario obtenerUsuario();
+    
+    
     
     
 }

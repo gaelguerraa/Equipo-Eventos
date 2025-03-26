@@ -4,8 +4,16 @@
  */
 package linkup.crearevento;
 
+import DTO_Negocio.EventoDTO;
 import linkup.control.ControlCrearEvento;
 import com.toedter.calendar.JCalendar;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import organizadorEventos.EventosException;
+import sistemaEventosNegocio.IFachadaEventos;
 
 /**
  *
@@ -14,17 +22,41 @@ import com.toedter.calendar.JCalendar;
 public class SeleccionarFechaHora extends javax.swing.JFrame {
     
     private ControlCrearEvento controlador;
+    private IFachadaEventos fachadaEventos;
+    private EventoDTO eventoDTO;
     /**
      * Creates new form VentanaPrincipalCrearEvento
      */
-    public SeleccionarFechaHora(ControlCrearEvento controlador) {
+    public SeleccionarFechaHora(ControlCrearEvento controlador, IFachadaEventos fachadaEventos, EventoDTO eventoDTO) {
         this.controlador = controlador;
+        this.eventoDTO = eventoDTO;
+        this.fachadaEventos = fachadaEventos;
         initComponents();
         setLocationRelativeTo(null);
     }
 
     public SeleccionarFechaHora() {
         initComponents();
+    }
+    
+    public void guardar(){
+        try {
+            String hora = (String)this.HoraCB.getSelectedItem();
+            String minuto = (String) this.MinutoCB.getSelectedItem();
+            Calendar calendar = new GregorianCalendar();
+            
+            calendar.setTime(jDateChooser1.getDate());
+            calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(hora));
+            calendar.set(Calendar.MINUTE, Integer.parseInt(minuto));
+            
+            
+            fachadaEventos.ValidarFecha(calendar);
+            
+            eventoDTO.setFechaHora(calendar);
+        } catch (EventosException ex) {
+            JOptionPane.showMessageDialog(this, "No se pudo hacer la accion", ex.getMessage(), JOptionPane.INFORMATION_MESSAGE);
+        }
+    
     }
     
     public void mostrar(){
@@ -59,8 +91,11 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        HoraCB = new javax.swing.JComboBox<>();
+        MinutoCB = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -109,8 +144,8 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(168, 91, 102));
-        jLabel3.setText("Seleccionar fecha y hora");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jLabel3.setText("Minuto");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(246, 227, 230));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonsiguiente.png"))); // NOI18N
@@ -140,13 +175,28 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
         jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, -1, -1));
 
         jDateChooser1.setPreferredSize(new java.awt.Dimension(110, 40));
-        jPanel3.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 180, -1));
+        jPanel3.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 180, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
-        jPanel3.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
+        HoraCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
+        jPanel3.add(HoraCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
-        jPanel3.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
+        MinutoCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        jPanel3.add(MinutoCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(168, 91, 102));
+        jLabel4.setText("Seleccionar fecha y hora");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(168, 91, 102));
+        jLabel5.setText("Fecha");
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 61, -1, 20));
+
+        jLabel6.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(168, 91, 102));
+        jLabel6.setText("Hora");
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 300, 400));
 
@@ -174,7 +224,8 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        controlador.mostrarSeleccionarUbicacion();
+        guardar();
+        controlador.mostrarSeleccionarUbicacion(eventoDTO);
         cerrar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -226,17 +277,20 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> HoraCB;
+    private javax.swing.JComboBox<String> MinutoCB;
     private javax.swing.JButton explorarButton;
     private javax.swing.JButton inicioButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

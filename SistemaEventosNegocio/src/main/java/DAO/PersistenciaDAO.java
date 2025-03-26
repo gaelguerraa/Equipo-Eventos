@@ -21,11 +21,11 @@ public class PersistenciaDAO {
     private EventosDAO eventosDAO;
     private UsuariosDAO usuariosDAO;
 
-    public PersistenciaDAO(CalendarioDAO calendarioDAO, InvitacionesDAO invitacionesDAO, EventosDAO eventosDAO, UsuariosDAO usuariosDAO) {
-        this.calendarioDAO = calendarioDAO;
-        this.invitacionesDAO = invitacionesDAO;
-        this.eventosDAO = eventosDAO;
-        this.usuariosDAO = usuariosDAO;
+    public PersistenciaDAO() {
+        this.calendarioDAO = new CalendarioDAO();
+        this.invitacionesDAO = new InvitacionesDAO();
+        this.eventosDAO = new EventosDAO();
+        this.usuariosDAO = new UsuariosDAO();
     }
     
     
@@ -60,5 +60,9 @@ public class PersistenciaDAO {
      
       public List<Usuario> obtenerContactos(Usuario usu){
           return usuariosDAO.obtenerContactos(usu);
+      }
+      
+      public Usuario obtenerUsuario(String s) throws EventosException{
+          return  usuariosDAO.obtenerUsuario(s);
       }
 }

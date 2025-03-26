@@ -4,7 +4,13 @@
  */
 package linkup.crearevento;
 
+import DTO_Negocio.EventoDTO;
+import ObjetosNegocio.Usuario;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JCheckBox;
 import linkup.control.ControlCrearEvento;
+import sistemaEventosNegocio.IFachadaEventos;
 
 /**
  *
@@ -13,14 +19,23 @@ import linkup.control.ControlCrearEvento;
 public class EnviarInvitaciones extends javax.swing.JFrame {
 
     private ControlCrearEvento controlador;
+    private IFachadaEventos fachadaEventos;
+    private EventoDTO eventoDTO;
+    private List<JCheckBox> checkboxes;
+    public List<Usuario> seleccionados;
     /**
      * Creates new form VentanaPrincipalCrearEvento
      */
     
     
-    public EnviarInvitaciones(ControlCrearEvento controlador) {
+    public EnviarInvitaciones(ControlCrearEvento controlador, IFachadaEventos fachadaEventos, EventoDTO eventoDTO) {
+        this.checkboxes = new ArrayList<>();
+        this.seleccionados = new ArrayList<>();
         this.controlador = controlador;
+        this.eventoDTO = eventoDTO;
+        this.fachadaEventos = fachadaEventos;
         initComponents();
+         mostrarContactos();
         setLocationRelativeTo(null);
     }
 
@@ -31,6 +46,31 @@ public class EnviarInvitaciones extends javax.swing.JFrame {
     public void mostrar(){
         setVisible(true);
     }
+    
+    public void mostrarContactos(){
+        System.out.println(eventoDTO.getFechaHora());
+        for (Usuario usuario : fachadaEventos.encontrarContactos()) {
+                JCheckBox checkBox = new JCheckBox(usuario.getNombre());
+                checkboxes.add(checkBox);
+                contactosPanel.add(checkBox);
+        }
+    }
+    
+    private void generarListaSeleccionados() {
+        
+        
+        for (int i = 0; i < checkboxes.size(); i++) {
+            JCheckBox checkBox = checkboxes.get(i);
+            if (checkBox.isSelected()) {
+                seleccionados.add(fachadaEventos.encontrarContactos().get(i));
+            }
+        }
+        
+        
+    
+    }
+    
+
     
     public void cerrar(){
         setVisible(false);
@@ -60,8 +100,8 @@ public class EnviarInvitaciones extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
         jTextField1 = new javax.swing.JTextField();
+        contactosPanel = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -147,7 +187,6 @@ public class EnviarInvitaciones extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(152, 79, 89));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 240, 130));
 
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(241, 212, 217));
@@ -159,6 +198,9 @@ public class EnviarInvitaciones extends javax.swing.JFrame {
             }
         });
         jPanel5.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, 30));
+
+        contactosPanel.setLayout(new javax.swing.BoxLayout(contactosPanel, javax.swing.BoxLayout.Y_AXIS));
+        jPanel5.add(contactosPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 240, 130));
 
         jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 260, 190));
 
@@ -214,12 +256,13 @@ public class EnviarInvitaciones extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        controlador.mostrarSeleccionarUbicacion();
+        controlador.mostrarSeleccionarUbicacion(eventoDTO);
         cerrar();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        controlador.mostrarConfirmacionEvento();
+        generarListaSeleccionados();
+        controlador.mostrarConfirmacionEvento(eventoDTO, seleccionados);
         cerrar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -278,6 +321,7 @@ public class EnviarInvitaciones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel contactosPanel;
     private javax.swing.JButton explorarButton;
     private javax.swing.JButton inicioButton;
     private javax.swing.JButton jButton1;
@@ -297,7 +341,6 @@ public class EnviarInvitaciones extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel logo;
     private javax.swing.JButton menuButton;
