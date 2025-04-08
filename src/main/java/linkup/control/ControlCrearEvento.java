@@ -4,12 +4,16 @@
  */
 package linkup.control;
 
+import DTO_Negocio.EventoDTO;
+import ObjetosNegocio.Usuario;
+import java.util.List;
 import linkup.crearevento.ConfirmacionEvento;
 import linkup.crearevento.EnviarInvitaciones;
 import linkup.crearevento.IngresarDetallesEvento;
 import linkup.crearevento.SeleccionarFechaHora;
 import linkup.crearevento.SeleccionarUbicacion;
 import linkup.crearevento.VentanaPrincipalCrearEvento;
+import sistemaEventosNegocio.IFachadaEventos;
 
 /**
  *
@@ -17,37 +21,43 @@ import linkup.crearevento.VentanaPrincipalCrearEvento;
  */
 public class ControlCrearEvento {
     
+    private IFachadaEventos fachadaEventos;
+
+    public ControlCrearEvento(IFachadaEventos fachadaEventos) {
+        this.fachadaEventos = fachadaEventos;
+    }
+
     public void iniciarFlujoCreacionEvento(){
         mostrarFormularioDetalles();
     }
     
     public void mostrarVentanaPrincipal(){
-        VentanaPrincipalCrearEvento ventanaPrincipal = new VentanaPrincipalCrearEvento(this);
+        VentanaPrincipalCrearEvento ventanaPrincipal = new VentanaPrincipalCrearEvento(this , fachadaEventos);
         ventanaPrincipal.mostrar();
     }
     
     public void mostrarFormularioDetalles(){
-        IngresarDetallesEvento ingresarDetalles = new IngresarDetallesEvento(this);
+        IngresarDetallesEvento ingresarDetalles = new IngresarDetallesEvento(this, fachadaEventos);
         ingresarDetalles.mostrar();
     }
     
-    public void mostrarSeleccionFechaHora(){
-        SeleccionarFechaHora seleccionFechaHora = new SeleccionarFechaHora(this);
+    public void mostrarSeleccionFechaHora(EventoDTO eventoDTO){
+        SeleccionarFechaHora seleccionFechaHora = new SeleccionarFechaHora(this, fachadaEventos, eventoDTO);
         seleccionFechaHora.mostrar();
     }
     
-    public void mostrarSeleccionarUbicacion(){
-        SeleccionarUbicacion seleccionUbicacion = new SeleccionarUbicacion(this);
+    public void mostrarSeleccionarUbicacion(EventoDTO eventoDTO){
+        SeleccionarUbicacion seleccionUbicacion = new SeleccionarUbicacion(this, fachadaEventos, eventoDTO);
         seleccionUbicacion.mostrar();
     }
     
-    public void mostrarEnviarInvitaciones(){
-        EnviarInvitaciones enviarInvitaciones = new EnviarInvitaciones(this);
+    public void mostrarEnviarInvitaciones(EventoDTO eventoDTO){
+        EnviarInvitaciones enviarInvitaciones = new EnviarInvitaciones(this, fachadaEventos, eventoDTO);
         enviarInvitaciones.mostrar();
     }
     
-    public void mostrarConfirmacionEvento(){
-        ConfirmacionEvento confirmacionEvento = new ConfirmacionEvento(this);
+    public void mostrarConfirmacionEvento(EventoDTO eventoDTO, List<Usuario> contactosSeleccionados){
+        ConfirmacionEvento confirmacionEvento = new ConfirmacionEvento(this, fachadaEventos, eventoDTO, contactosSeleccionados );
         confirmacionEvento.mostrar();
     }
     

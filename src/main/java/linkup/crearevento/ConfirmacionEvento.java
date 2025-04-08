@@ -4,7 +4,12 @@
  */
 package linkup.crearevento;
 
+import DTO_Negocio.EventoDTO;
+import ObjetosNegocio.Evento;
+import ObjetosNegocio.Usuario;
+import java.util.List;
 import linkup.control.ControlCrearEvento;
+import sistemaEventosNegocio.IFachadaEventos;
 
 /**
  *
@@ -13,13 +18,19 @@ import linkup.control.ControlCrearEvento;
 public class ConfirmacionEvento extends javax.swing.JFrame {
 
     private ControlCrearEvento controlador;
+    private IFachadaEventos fachadaEventos;
+    private EventoDTO eventoDTO;
+    private List<Usuario> contactosSeleccionados;
     /**
      * Creates new form VentanaPrincipalCrearEvento
      */
     
     
-    public ConfirmacionEvento(ControlCrearEvento controlador) {
+    public ConfirmacionEvento(ControlCrearEvento controlador, IFachadaEventos fachadaEventos, EventoDTO eventoDTO, List<Usuario> contactosSeleccionados) {
         this.controlador = controlador;
+        this.eventoDTO = eventoDTO;
+        this.fachadaEventos = fachadaEventos;
+        this.contactosSeleccionados = contactosSeleccionados;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -172,11 +183,13 @@ public class ConfirmacionEvento extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        controlador.mostrarEnviarInvitaciones();
+        controlador.mostrarEnviarInvitaciones(eventoDTO);
         cerrar();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        Evento evento = fachadaEventos.CrearEvento(eventoDTO);
+        fachadaEventos.enviarInvitaciones(contactosSeleccionados, evento);
         controlador.mostrarVentanaPrincipal();
         cerrar();
     }//GEN-LAST:event_jButton5ActionPerformed
